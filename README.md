@@ -44,19 +44,3 @@ For a fully Azure voice path, enable Azure Speech TTS (writes an MP3 to Blob and
 - Set `USE_AZURE_TTS=true` to synthesize via Azure Speech and play via `<Play>`
 
 ---
-
-## Folder layout
-```
-.
-├── .github/workflows/azure-functions-deploy.yml
-├── function_app/
-│   ├── __init__.py
-│   ├── function.json
-│   ├── host.json
-│   ├── requirements.txt
-│   ├── local.settings.json.template
-│   └── storage_helpers.py
-├── backend/conversation_script.txt
-├── README_AZURE.md
-└── LICENSE
-```
