@@ -100,14 +100,14 @@ az role assignment create `
 
 # ---- Store Secrets in Key Vault (examples) ----
 
-# 1) Speech keys/region
+# 1 Speech keys/region
 
 
 $SPEECH_KEY = az cognitiveservices account keys list -g $AZ_RG -n $AZ_SPEECH --query key1 -o tsv
 az keyvault secret set --vault-name $AZ_KV --name SPEECH-REGION --value $AZ_LOC | Out-Null
 az keyvault secret set --vault-name $AZ_KV --name SPEECH-KEY    --value $SPEECH_KEY | Out-Null
 
-# 2)Azure OpenAI — you must have access approved and an Azure OpenAI resource created.
+# 2 Azure OpenAI — you must have access approved and an Azure OpenAI resource created.
 
 $AZ_OPENAI="aoai-voice-agent"
 $AZ_RG="rg-voice-agent"
@@ -131,11 +131,15 @@ Go into Azure AI foundry and deploy a model
  az keyvault secret set --vault-name $AZ_KV --name OPENAI-API-KEY   --value "<aoai-key>"
  az keyvault secret set --vault-name $AZ_KV --name OPENAI-ENDPOINT  --value "https://<your-aoai>.openai.azure.com/"
 
-# 3) Twilio token (for validating requests if you plan to)
+# 3  Twilio token (for validating requests if you plan to)
  
  az keyvault secret set --vault-name $AZ_KV --name TWILIO-AUTH-TOKEN --value "<twilio-auth-token>"
 
-# 4) Storage connection string (needed if you’ll use Azure Speech TTS → Blob → Twilio <Play>)
+# 4 Storage connection string (needed if you’ll use Azure Speech TTS → Blob → Twilio <Play>)
+
+# Ignore for now, going to use twilio say voice
+# Used for Azure Neural voices
+
 $ST_CONN = az storage account show-connection-string -g $AZ_RG -n $AZ_SA --query connectionString -o tsv
 az keyvault secret set --vault-name $AZ_KV --name STORAGE_CONN_STR --value $ST_CONN | Out-Null
 # Optionally choose a container name for audio
