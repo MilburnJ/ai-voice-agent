@@ -27,7 +27,7 @@ func start
 ### 3) Deploy
 Use the included GitHub Actions workflow or:
 ```bash
-func azure functionapp publish <YOUR_FUNCTION_APP_NAME>
+func azure functionapp publish <YOUR_FUNCTION_APP_NAME> --python
 ```
 
 ### 4) Twilio webhook
